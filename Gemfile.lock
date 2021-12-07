@@ -22,6 +22,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
+    pg (1.2.3)
     public_suffix (4.0.6)
     racc (1.6.0)
     rack (2.2.3)
@@ -70,6 +71,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  pg
   rack
   rspec
   rspec-sinatra
