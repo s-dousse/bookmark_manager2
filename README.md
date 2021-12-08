@@ -48,3 +48,35 @@ we defined a method #truncate to clean up the database before each test when we 
 
 We then added this method to RSpec's #configure method in the spec_helper.rb
 we call the method befor(:each) configuration
+
+# 10) Creating bookmarks
+
+1.	- write Feature Test (Capybara) - adding_bookmarks_spec.rb
+		-> add form to view (box to fill in with text and a save button)
+
+	- test is still failing because:
+	the user submits the form => GET requet to the same url /bookmarks/new !
+		-> need a new route where we save the file!
+
+2. 	- create a POST route: '/bookmarks/saved' (not like walkthrough! but redirects to '/' which redirects to '/bookmarks')
+		-> <form action="/bookmarks/saved" method="post">
+
+	- test is still failing because:
+	we don't have a way to save the data from the form
+
+	- define the POST route:
+		->print the params to check how 'url' is saved
+
+	- pseudo code for how to save the 'url' params in our '/bookmarks/saved' route WITHOUT OUR BOOKMARK.RB CLASS (Model)!
+		a) store 'url' as a variable
+		b) connect to our test database (like if ENV['ENVIRONEMENT'] = 'test' when we run RSpec)*
+		c) insert the new piece of data 'url' in our test database
+		using sql : INSERT INTO table_name (column_category) VALUES(data_entry)
+		note :data_entry needs to be a string here
+		((d) redirect back to '/bookmarks')
+
+
+	* the logic to choose if connection accesses the 'real' database or 'test' database will be implement in the Model bookmark.rb later
+
+3.	- extract the logic form the Controller and add it to the Model
+		-> use the ENV['ENVIRONEMENT'] to decide which databases should be used (are we in test mode or not? very similar to the .all method)
