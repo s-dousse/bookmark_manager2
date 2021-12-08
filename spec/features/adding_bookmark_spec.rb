@@ -7,9 +7,10 @@ feature 'Adding bookmarks' do
 
     connection = PG.connect(dbname: 'bookmark_manager_test')
 
-    visit('/bookmarks')
+    visit('/bookmarks/new')
     fill_in('url', with: 'www.sarahdousse.com')
     click_button('Save')
+    
     expect(page).to have_content('www.sarahdousse.com').once
 
   end
