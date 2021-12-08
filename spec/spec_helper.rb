@@ -1,6 +1,4 @@
 # set the environment to "test"
-ENV['RACK_ENV'] = 'test'
-
 ENV['CUSTOM_ENVIRONEMENT'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
