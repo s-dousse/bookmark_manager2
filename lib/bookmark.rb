@@ -13,6 +13,6 @@ class Bookmark
   end
 
   def self.create(url)
-    url
+    url 
   end
 end

@@ -2,16 +2,12 @@ require 'capybara/rspec'
 require_relative '../../app'
 Capybara.app = BookmarkManager
 
-feature 'Adding bookmarks' do
-  scenario 'A user can add bookmarks' do
-
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-
+feature 'Adding a new bookmark' do
+  scenario 'A user can add a bookmark to Bookmark Manager' do
     visit('/bookmarks/new')
-    fill_in('url', with: 'www.sarahdousse.com')
-    click_button('Save')
-    
-    expect(page).to have_content('www.sarahdousse.com').once
+    fill_in('url', with: 'http://example.org')
+    click_button('Submit')
 
+    expect(page).to have_content 'http://example.org'
   end
 end
