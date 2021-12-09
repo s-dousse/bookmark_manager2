@@ -33,4 +33,14 @@ describe Bookmark do
       expect(Bookmark.all).not_to include 'Example2 - http://www.example.org'
     end
   end
+
+  describe '.updates' do
+    it 'updates an existing bookmark' do
+      Bookmark.create(url: 'http://www.example.org', title: 'Example2')
+      Bookmark.update(title: 'Example2', new_title: 'Example3', url: "www.example.com")
+      expect(Bookmark.all).to include 'Example3 - www.example.com'
+    end
+  end
+
+
 end
