@@ -9,7 +9,9 @@ class Bookmark
     end
 
     result = connection.exec("SELECT * FROM bookmarks")
-    result.map { |bookmark| bookmark['title'] + " - " + bookmark['url'] }
+    result.map do |bookmark|
+      "%s - %s" % [bookmark['title'], bookmark['url']]
+    end
   end
 
   def self.create(url:, title:)

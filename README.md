@@ -80,3 +80,24 @@ we call the method befor(:each) configuration
 
 3.	- extract the logic form the Controller and add it to the Model
 		-> use the ENV['ENVIRONEMENT'] to decide which databases should be used (are we in test mode or not? very similar to the .all method)
+
+# 11) Wrapping Database Data in Program Objects
+
+1.	in psql we need to update our test and development database to accept ```table``` as a value
+			-> ALTER TABLE bookmarks ADD COLUMN title VARCHAR(60);
+			-> and add it to the 01_create_bookmark_table
+			(making sure that the database setup exactly matches our own process, and any errors in the setup process can be easily rolled back)
+
+2. write a feature test (added to viewing_bookmarks as it is just a new value)
+		!!! we need the url to be a link ??? -> needs updating we had it as content only
+
+3. add a new field to the view
+
+4. pass new param / field to the controller
+
+5. update test in bookmark.rb
+
+
+
+
+
